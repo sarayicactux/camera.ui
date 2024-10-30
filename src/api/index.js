@@ -3,11 +3,19 @@
 
 import http from 'http';
 import https from 'https';
-
+import * as path from 'path';
+import cron from 'node-cron';
 import ConfigService from '../services/config/config.service.js';
 import LoggerService from '../services/logger/logger.service.js';
+import * as RecordingsModel from './components/recordings/recordings.model.js';
+import * as CamerasModel from './components/cameras/cameras.model.js';
+import os from 'os';
+import fs from 'fs-extra';
+
 
 const { log } = LoggerService;
+const storagePath = path.resolve(os.homedir(), '.camera.ui/database');
+const dbObj = fs.readJsonSync(storagePath + '/database.json')
 
 import App from './app.js';
 
@@ -65,11 +73,39 @@ export default class Server {
       server.close();
     });
 
+    const recording = async() => {
+      // const timer = 1*60;
+      const timer = 5*60;
+      
+          const camras = await CamerasModel.list();
+          for (const camera of camras) {
+            console.log(camera.name);
+            RecordingsModel.createRecording({
+              // path: `${path.resolve()}/recording`,
+               path: dbObj.settings.recordings.path,
+              timer,
+              camera: camera.name,
+              trigger: "doorbell",
+              type: "Video"
+            });
+          }
+          RecordingsModel.removeOlds(13 * timer);
+
+       
+    }
+    setTimeout(async() => {
+        cron.schedule('*/5 * * * *', () => {
+            recording();
+        });
+       },1000 );
+
+
+  //RecordingsModel.removeAll()
     server.on('close', () => {
       log.debug('User interface closed');
       controller.emit('shutdown');
     });
-
+    
     return server;
   }
 }

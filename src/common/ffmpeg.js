@@ -313,7 +313,6 @@ export const storeVideo = (camera, recordingPath, fileName, recordingTimer) => {
         // ignore
       }
     }
-
     const ffmpegArguments = [
       '-hide_banner',
       '-loglevel',

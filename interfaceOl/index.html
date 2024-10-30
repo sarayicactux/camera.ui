@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1,viewport-fit=cover"><meta name="Description" , content="camera.ui is a user interface for RTSP capable cameras."><meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#202020" media="(prefers-color-scheme: dark)"><!--[if IE]><link rel="icon" href="/favicon.ico" /><![endif]--><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-2048-2732.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-2732-2048.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-1668-2388.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-2388-1668.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-1536-2048.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-2048-1536.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-1668-2224.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-2224-1668.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-1620-2160.png" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-2160-1620.png" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-1284-2778.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-2778-1284.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-1170-2532.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-2532-1170.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-1125-2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-2436-1125.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-1242-2688.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-2688-1242.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-828-1792.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-1792-828.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-1242-2208.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-2208-1242.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-750-1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-1334-750.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-640-1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-1136-640.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-2048-2732.png" media="(prefers-color-scheme: dark) and (device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-2732-2048.png" media="(prefers-color-scheme: dark) and (device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-1668-2388.png" media="(prefers-color-scheme: dark) and (device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-2388-1668.png" media="(prefers-color-scheme: dark) and (device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-1536-2048.png" media="(prefers-color-scheme: dark) and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-2048-1536.png" media="(prefers-color-scheme: dark) and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-1668-2224.png" media="(prefers-color-scheme: dark) and (device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-2224-1668.png" media="(prefers-color-scheme: dark) and (device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-1620-2160.png" media="(prefers-color-scheme: dark) and (device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-2160-1620.png" media="(prefers-color-scheme: dark) and (device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-1284-2778.png" media="(prefers-color-scheme: dark) and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-2778-1284.png" media="(prefers-color-scheme: dark) and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-1170-2532.png" media="(prefers-color-scheme: dark) and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-2532-1170.png" media="(prefers-color-scheme: dark) and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-1125-2436.png" media="(prefers-color-scheme: dark) and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-2436-1125.png" media="(prefers-color-scheme: dark) and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-1242-2688.png" media="(prefers-color-scheme: dark) and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-2688-1242.png" media="(prefers-color-scheme: dark) and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-828-1792.png" media="(prefers-color-scheme: dark) and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-1792-828.png" media="(prefers-color-scheme: dark) and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-1242-2208.png" media="(prefers-color-scheme: dark) and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-2208-1242.png" media="(prefers-color-scheme: dark) and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-750-1334.png" media="(prefers-color-scheme: dark) and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-1334-750.png" media="(prefers-color-scheme: dark) and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-640-1136.png" media="(prefers-color-scheme: dark) and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"><link rel="apple-touch-startup-image" href="/img/splash/apple-splash-dark-1136-640.png" media="(prefers-color-scheme: dark) and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"><title>camera.ui</title><script>!(function () {
+        var e = new XMLHttpRequest();
+        (e.onload = function () {
+          var n = e.responseText,
+            t = n.indexOf('"/precache-manifest.') + 20,
+            o = n.indexOf('.js"', t);
+          if (o - t == 32) {
+            var r = localStorage,
+              i = r.getItem('pmv'),
+              s = n.substring(t, o);
+            if (s !== i) return r.setItem('pmv', s), window.location.reload(!0);
+          }
+        }),
+          e.open('GET', '/service-worker.js?c=' + new Date().getTime()),
+          e.setRequestHeader('Cache-Control', 'no-cache, no-store, must-revalidate'),
+          e.send();
+      })();</script><script>let autoDarkmode = 'auto' === localStorage.getItem('darkmode');
+      if ((autoDarkmode || localStorage.getItem('darkmode') === null) && window.matchMedia) {
+        const e = (e) => {
+          e
+            ? (localStorage.setItem('theme', 'dark'), document.documentElement.setAttribute('data-theme', 'dark'))
+            : (localStorage.setItem('theme', 'light'), document.documentElement.setAttribute('data-theme', 'light'));
+        };
+        window.matchMedia('(prefers-color-scheme: dark)').matches ? e(!0) : e(!1),
+          window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (t) => {
+            (autoDarkmode = 'auto' === localStorage.getItem('darkmode') || localStorage.getItem('darkmode') === null) &&
+              (t.matches ? e(!0) : e(!1));
+          });
+      } else {
+        const e = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+        e && document.documentElement.setAttribute('data-theme', e);
+      }
+      const currentColorTheme = localStorage.getItem('theme-color') ? localStorage.getItem('theme-color') : null;
+      currentColorTheme && document.documentElement.setAttribute('data-theme-color', currentColorTheme);</script><link href="/css/404.9c66ffe2.css" rel="prefetch"><link href="/css/camera.033d5e2d.css" rel="prefetch"><link href="/css/cameras.ed24f094.css" rel="prefetch"><link href="/css/cameras~console~dashboard~login~notifications~plugins~recordings~settings~start.114be4f0.css" rel="prefetch"><link href="/css/cameras~console~dashboard~notifications~recordings~settings.2346977c.css" rel="prefetch"><link href="/css/camera~cameraFeed~cameras~camview~config~console~dashboard~notifications~plugins~recordings~settings~7e019b2d.25aa1097.css" rel="prefetch"><link href="/css/camera~cameraFeed~cameras~camview~dashboard.d3cadd61.css" rel="prefetch"><link href="/css/camview.082c4ef0.css" rel="prefetch"><link href="/css/config.b3859411.css" rel="prefetch"><link href="/css/console.61ee9f56.css" rel="prefetch"><link href="/css/dashboard.4a7c84f9.css" rel="prefetch"><link href="/css/login.344e82d8.css" rel="prefetch"><link href="/css/notifications.c122afef.css" rel="prefetch"><link href="/css/notifications~recordings~settings.51e80009.css" rel="prefetch"><link href="/css/plugins.dfb1b59f.css" rel="prefetch"><link href="/css/recordings.86a8054a.css" rel="prefetch"><link href="/css/settings.ea405def.css" rel="prefetch"><link href="/css/start.864e1765.css" rel="prefetch"><link href="/css/utilization.04ff0ded.css" rel="prefetch"><link href="/js/404.4af0a4ec.js" rel="prefetch"><link href="/js/camera.2ec3b408.js" rel="prefetch"><link href="/js/cameraFeed.994a7a15.js" rel="prefetch"><link href="/js/cameras.9905ce0f.js" rel="prefetch"><link href="/js/cameras~console~dashboard~login~notifications~plugins~recordings~settings~start.5ebac36a.js" rel="prefetch"><link href="/js/cameras~console~dashboard~notifications~recordings~settings.26f32a0f.js" rel="prefetch"><link href="/js/camera~cameraFeed~cameras~camview~config~console~dashboard~notifications~plugins~recordings~settings~7e019b2d.370c85a1.js" rel="prefetch"><link href="/js/camera~cameraFeed~cameras~camview~dashboard.455cd40e.js" rel="prefetch"><link href="/js/camview.85971e74.js" rel="prefetch"><link href="/js/config.f4e0d29a.js" rel="prefetch"><link href="/js/console.58209a5d.js" rel="prefetch"><link href="/js/dashboard.34b180b4.js" rel="prefetch"><link href="/js/login.82ebde3e.js" rel="prefetch"><link href="/js/notifications.5acd5b93.js" rel="prefetch"><link href="/js/notifications~recordings~settings.5b000acb.js" rel="prefetch"><link href="/js/plugins.7fd1b4ec.js" rel="prefetch"><link href="/js/recordings.832cbaf0.js" rel="prefetch"><link href="/js/settings.b2eda969.js" rel="prefetch"><link href="/js/start.bdd3d084.js" rel="prefetch"><link href="/js/utilization.e6aa0325.js" rel="prefetch"><link href="/css/app.c5311375.css" rel="preload" as="style"><link href="/css/chunk-vendors.0cabb133.css" rel="preload" as="style"><link href="/js/app.1d606cfa.js" rel="preload" as="script"><link href="/js/chunk-vendors.fa9354a8.js" rel="preload" as="script"><link href="/css/chunk-vendors.0cabb133.css" rel="stylesheet"><link href="/css/app.c5311375.css" rel="stylesheet"><link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32x32.png?v=1729686568680"><link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16x16.png?v=1729686568680"><link rel="manifest" href="/manifest.json?v=1729686568680"><meta name="theme-color" content="#f1f1f1"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="camera.ui"><link rel="apple-touch-icon" href="/img/icons/apple-touch-icon-dark-180x180.png?v=1729686568680"><link rel="mask-icon" href="/img/icons/safari-pinned-tab.svg?v=1729686568680" color="#f1f1f1"><meta name="msapplication-TileImage" content="/img/icons/msapplication-icon-144x144.png?v=1729686568680"><meta name="msapplication-TileColor" content="#f1f1f1"></head><body><noscript><strong>We're sorry but camera.ui doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div><script src="/js/chunk-vendors.fa9354a8.js"></script><script src="/js/app.1d606cfa.js"></script>
+        <script>
+        let lastUrl = ""; 
+        let camName = "";
+        let addedBtn = false;
+        function checkUrlChange() {
+            const fulScreen = document.querySelectorAll('.fullscreen-video-overlay') ;
+            if(fulScreen.length > 0 && camName.length > 2 && !addedBtn){
+              document.getElementsByClassName("control-buttons")[0].classList.add("mystyle")
+                addedBtn = true;
+            } 
+            else{
+              
+               addedBtn = false;
+            }
+           if(fulScreen.length === 0 && document.getElementsByClassName("control-buttons").length > 0 ){
+            document.getElementsByClassName("control-buttons")[0].classList.remove("mystyle")    
+           } 
+            const currentUrl = location.href;
+            if (currentUrl !== lastUrl) {
+                // console.log('URL changed from', lastUrl, 'to', currentUrl);
+                lastUrl = currentUrl;
+                // استخراج پارامتر جدید
+                const currentPath = new URL(currentUrl).pathname;
+                if(currentPath.includes('/cameras/')){
+                    const pathParts = currentPath.split('/cameras/');
+                    const cameraParam = pathParts[pathParts.length - 1];
+                    // ارسال درخواست به API
+                    camName = cameraParam;
+                    if(camName.includes('PTZ')){
+                      setTimeout(()=>{
+                          const controlButtons = document.createElement('div');
+                          controlButtons.className = 'control-buttons';
+                          controlButtons.innerHTML = `
+                              <button class="up" onclick="move(0, 0.05, 0)">Up</button>
+                              <button class="down" onclick="move(0, -0.05, 0)">Down</button>
+                              <button class="left" onclick="move(-0.05, 0, 0)">Left</button>
+                              <button class="right" onclick="move(0.05, 0, 0)">Right</button>
+                              <button class="zoom-in" onclick="move(0, 0, 0.05)">+</button>
+                              <button class="zoom-out" onclick="move(0, 0, -0.05)">-</button>
+                          `;
+
+                          // Find the target element
+                          const targetElement = document.querySelector('.tw-flex.tw-justify-between.tw-items-center.tw-mt-2.col.col-12');
+                          
+                          // Insert the new element before the target element
+                          if (targetElement && targetElement.parentNode) {
+                              targetElement.parentNode.insertBefore(controlButtons, targetElement);
+5
+                          }
+
+                      },3000)
+                      
+                    }
+                }
+                
+                
+            }
+        }
+
+        function move(x,y,zoom) {
+          let camName = ""
+            const currentUrl = location.href;
+                  console.log('URL changed from', lastUrl, 'to', currentUrl);
+                  lastUrl = currentUrl;
+                  // استخراج پارامتر جدید
+                  const currentPath = new URL(currentUrl).pathname;
+                  if(currentPath.includes('/cameras/')){
+                      const pathParts = currentPath.split('/cameras/');
+                      const camName = pathParts[pathParts.length - 1];
+                      const apiUrl = 'http://192.168.20.27:8081/api/cameras/conrols';
+
+                      fetch(apiUrl, {
+                          method: 'POST',
+                          headers: {
+                              'Content-Type': 'application/json',
+                          },
+                          body: JSON.stringify({
+                              camName,
+                              x,
+                              y,
+                              zoom
+                          })
+                      }).then(response => {
+                          if (!response.ok) {
+                              throw new Error('Network response was not ok');
+                          }
+                          return response.json();
+                      })
+                      .then(data => {
+                          console.log( 'درخواست با موفقیت ارسال شد: ' + JSON.stringify(data));
+                      })
+                      .catch(error => {
+                          console.error('خطا در ارسال درخواست:', error);
+                      });
+                      // ارسال درخواست به API
+                  }
+
+        }
+
+        setInterval(checkUrlChange, 100);
+
+        // اجرای اولیه برای URL فعلی
+        checkUrlChange();
+       
+       
+    </script>
+
+
+<style>
+    .mystyle {
+      position: absolute;
+      top: 5%;
+      left: 15%; 
+      z-index: 999999;
+    }
+
+    .control-buttons {
+      display: grid;
+      grid-template-columns: repeat(6, 80px);
+      gap: 10px;
+      align-items: center;
+      justify-items: center;
+      /* position: absolute;
+      top: 18%;
+      right: 20%; */
+    }
+
+    .control-buttons button {
+      width: 70px;
+      height: 70px;
+      background-color: #4CAF50; /* رنگ سبز برای دکمه‌ها */
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .control-buttons button:hover {
+      background-color: #45a049;
+      transform: scale(1.1);
+    }
+
+    .control-buttons button:active {
+      background-color: #3e8e41;
+    }
+
+    /* دکمه‌های خاص */
+    /* .up { grid-column: 2; grid-row: 1; }
+    .left { grid-column: 1; grid-row: 2; }
+    .right { grid-column: 3; grid-row: 2; }
+    .down { grid-column: 2; grid-row: 3; }
+    .zoom-in { grid-column: 3; grid-row: 4; }
+    .zoom-out { grid-column: 1; grid-row: 4; } */
+
+    /* استایل متنی دکمه‌ها برای تطبیق با پس‌زمینه‌های تیره و روشن */
+    .control-buttons button {
+      background-color: #333; /* سیاه */
+      color: white; /* برای پس زمینه سیاه */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .control-buttons button.light {
+      background-color: #fff; /* سفید */
+      color: black; /* برای پس‌زمینه سفید */
+      border: 2px solid #ccc;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  </style>  
+    </body></html>

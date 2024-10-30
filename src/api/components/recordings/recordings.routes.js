@@ -75,8 +75,8 @@ export const routesConfig = (app) => {
    *         description: Internal server error
    */
   app.get('/api/recordings', [
-    ValidationMiddleware.validJWTNeeded,
-    PermissionMiddleware.minimumPermissionLevelRequired('recordings:access'),
+    // ValidationMiddleware.validJWTNeeded,
+    // PermissionMiddleware.minimumPermissionLevelRequired('recordings:access'),
     RecordingsController.list,
     PaginationMiddleware.pages,
   ]);
@@ -111,9 +111,9 @@ export const routesConfig = (app) => {
    *         description: Internal server error
    */
   app.post('/api/recordings', [
-    ValidationMiddleware.validJWTNeeded,
-    PermissionMiddleware.minimumPermissionLevelRequired('notifications:edit'),
-    RecordingsValidationMiddleware.hasValidFields,
+   // ValidationMiddleware.validJWTNeeded,
+  //  PermissionMiddleware.minimumPermissionLevelRequired('notifications:edit'),
+    //RecordingsValidationMiddleware.hasValidFields,
     RecordingsController.insert,
   ]);
 

@@ -252,24 +252,18 @@ export const resetMotion = async (req, res) => {
     });
   }
 };
-const cameras = [{
-    name: 'test',
-    username: 'ho',
-    password: '1850014531',
-    hostname: '192.168.14.1',
-    port: 80,
-}];
-const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
-let cameraPosition = {
-    x: 0,
-    y: 0,
-    zoom: 0
-};
+
 export const moveCamera = async (req, res) => {
-  
   try {
+    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+    let cameraPosition = {
+        x: 0,
+        y: 0,
+        zoom: 0
+    };
    const { camName, x, y,zoom } = req.body;
-    const camera = cameras.find(c => c.name === camName);
+    const camera = await CamerasModel.findByName(camName);
+
     if (camera) {
         
         // const cam = new Cam({ username: camera.username, password: camera.password, hostname: camera.hostname, port: camera.port });
@@ -289,7 +283,8 @@ export const moveCamera = async (req, res) => {
             const moveX = newX - cameraPosition.x;
             const moveY = newY - cameraPosition.y;
             const moveZoom = newZoom - cameraPosition.zoom;
-           // console.log({ x: moveX, y: moveY, zoom: moveZoom });
+            // console.log({ x: moveX, y: moveY, zoom: moveZoom });
+            // console.log({ cameraPosition });
                     // Only move if there's a change
                     if (moveX !== 0 || moveY !== 0 || moveZoom !== 0) {
                         await cam.relativeMove({ x: moveX, y: moveY, zoom: moveZoom  ,speed:{x:0.1, y:0.1,zoom:0.1}});
@@ -301,6 +296,9 @@ export const moveCamera = async (req, res) => {
                         return
                     }
                     else {
+                    await cam.relativeMove({ x: 0, y: 0, zoom: -0.05 ,speed:{x:0.1, y:0.1,zoom:0.1}});
+                        // Update tracked position
+                    cameraPosition = { x: 0, y: 0, zoom: 0 };
                     res.status(404).send('out of range');
                     return;
                     }

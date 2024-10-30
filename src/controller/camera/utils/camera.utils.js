@@ -348,7 +348,8 @@ export const generateVideoConfig = (videoConfig) => {
   config.maxFPS = config.maxFPS >= 20 ? videoConfig.maxFPS : 20;
   config.maxStreams = config.maxStreams >= 1 ? videoConfig.maxStreams : 4;
   config.maxBitrate = config.maxBitrate || 299;
-  config.vcodec = config.vcodec || 'libx264';
+  // config.vcodec = config.vcodec || 'libx264';
+  config.vcodec = config.vcodec || 'copy';
   config.acodec = config.acodec || 'libfdk_aac';
   config.encoderOptions = config.encoderOptions || '';
   config.packetSize = config.packetSize || 1318;

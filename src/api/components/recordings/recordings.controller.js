@@ -2,9 +2,11 @@
 'use-strict';
 
 import * as RecordingsModel from './recordings.model.js';
+import * as path from 'path';
 
 export const insert = async (req, res) => {
   try {
+    
     let recording = await RecordingsModel.findById(req.body.id);
 
     if (recording) {
@@ -13,9 +15,9 @@ export const insert = async (req, res) => {
         message: 'Recording already exists',
       });
     }
-
+    req.body.path =  `${path.resolve()}/recording`;
+    req.body.timer =  5*60;
     recording = await RecordingsModel.createRecording(req.body);
-
     res.status(201).send(recording);
   } catch (error) {
     res.status(500).send({
@@ -30,7 +32,6 @@ export const list = async (req, res, next) => {
     if (req.query.refresh === 'true') {
       await RecordingsModel.refresh();
     }
-
     res.locals.items = await RecordingsModel.list(req.query);
 
     return next();

@@ -3,11 +3,13 @@
 import fs from 'fs-extra';
 import moment from 'moment';
 import { customAlphabet } from 'nanoid/async';
+import * as path from 'path';
 
 import Cleartimer from '../../../common/cleartimer.js';
 
 import Database from '../../database.js';
 import Socket from '../../socket.js';
+import Models from '../../../models/Index.js';
 
 import {
   getAndStoreSnapshot,
@@ -23,10 +25,13 @@ const nanoid = customAlphabet('1234567890abcdef', 10);
 export const refresh = async () => {
   return await Database.refreshRecordingsDatabase();
 };
+// const filePath = "./recording.json";
 
-export const list = (query) => {
-  let recordings = Database.recordingsDB.chain.get('recordings').cloneDeep().value();
-
+export const list = async (query) => {
+  // let recordings = Database.recordingsDB.chain.get('recordings').cloneDeep().value();
+//  const jsonString = await fs.readFile(filePath, 'utf8');
+  //   let recordings = JSON.parse(jsonString).records;
+  let recordings = await Models.Recording.findAll();
   // eslint-disable-next-line unicorn/consistent-function-scoping
   const GetSortOrder = (property) => {
     return (a, b) => {
@@ -38,8 +43,8 @@ export const list = (query) => {
       return 0;
     };
   };
-
   recordings.sort(GetSortOrder('timestamp'));
+  
 
   if (moment(query.from, 'YYYY-MM-DD').isValid()) {
     recordings = recordings.filter((recording) => {
@@ -82,27 +87,27 @@ export const list = (query) => {
     const types = query.types.split(',');
     recordings = recordings.filter((recording) => types.includes(recording.recordType));
   }
-
   return recordings;
 };
 
-export const listByCameraName = (name) => {
-  let recordings = Database.recordingsDB.chain.get('recordings').reverse().cloneDeep().value();
+export const listByCameraName = async(name) => {
+  // let recordings = Database.recordingsDB.chain.get('recordings').reverse().cloneDeep().value();
 
-  if (recordings) {
-    recordings = recordings.filter((rec) => rec.camera === name);
-  }
-
+  // if (recordings) {
+  //   recordings = recordings.filter((rec) => rec.camera === name);
+  // }
+  const recordings = await Models.Recording.findAll({where:{name}});
   return recordings;
 };
 
-export const findById = (id) => {
-  return Database.recordingsDB.chain.get('recordings').find({ id: id }).cloneDeep().value();
+export const findById = async (id) => {
+  // return Database.recordingsDB.chain.get('recordings').find({ id: id }).cloneDeep().value();
+  return await Models.Recording.findById(id);
 };
 
 export const createRecording = async (data, fileBuffer) => {
+  
   const camera = await Database.interfaceDB.chain.get('cameras').find({ name: data.camera }).cloneDeep().value();
-
   if (!camera) {
     throw new Error('Can not assign recording to camera!');
   }
@@ -130,7 +135,7 @@ export const createRecording = async (data, fileBuffer) => {
   const label = (data.label || 'no label').toString();
 
   const recording = {
-    id: id,
+    // id: id,
     camera: camera.name,
     fileName: `${fileName}.${extension}`,
     name: fileName,
@@ -153,11 +158,16 @@ export const createRecording = async (data, fileBuffer) => {
     const storeSnapshot = true;
 
     // eslint-disable-next-line unicorn/prefer-ternary
-    if (data.imgBuffer) {
-      await storeBuffer(camera, data.imgBuffer, data.path, fileName, label, isPlaceholder, externRecording);
-    } else {
-      await getAndStoreSnapshot(camera, false, data.path, fileName, label, isPlaceholder, storeSnapshot);
+    // if (data.imgBuffer) {
+    //   await storeBuffer(camera, data.imgBuffer, data.path, fileName, label, isPlaceholder, externRecording);
+    // } else {
+    //   await getAndStoreSnapshot(camera, false, data.path, fileName, label, isPlaceholder, storeSnapshot);
+    // }
+    try {
+           await getAndStoreSnapshot(camera, false, data.path, fileName, label, isPlaceholder, storeSnapshot);
     }
+    catch (e) {
+          }
 
     if (data.type === 'Video') {
       if (camera.prebuffering) {
@@ -179,54 +189,98 @@ export const createRecording = async (data, fileBuffer) => {
 
         await storeVideoBuffer(camera, filebuffer, data.path, fileName);
       } else {
-        await storeVideo(camera, data.path, fileName, data.timer);
+        console.log(camera.name + '  =>  ' + data.path)
+         storeVideo(camera, data.path, fileName, data.timer);
+        // await storeVideo(camera, data.path, fileName, data.timer);
       }
     }
   }
-
-  Database.recordingsDB.chain.push(recording).value();
-
+  // const jsonString = await fs.readFile(filePath, 'utf8');
+  // const jsonData = JSON.parse(jsonString);
+  // jsonData.records.push(recording);
+  // await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
+  await Models.Recording.create(recording);
   Socket.io.emit('recording', recording);
 
   Cleartimer.setRecording(id, timestamp);
+  Database.recordingsDB.chain.push(recording).value();
 
   return recording;
 };
 
 export const removeById = async (id) => {
-  const recPath = Database.recordingsDB.chain.get('path').cloneDeep().value();
+  // const recPath = Database.recordingsDB.chain.get('path').cloneDeep().value();
 
-  const recording = Database.recordingsDB.chain
-    .get('recordings')
-    .find((rec) => rec.id === id)
-    .cloneDeep()
-    .value();
+  // const recording = Database.recordingsDB.chain
+  //   .get('recordings')
+  //   .find((rec) => rec.id === id)
+  //   .cloneDeep()
+  //   .value();
 
+  // if (recording) {
+  //   await fs.remove(recPath + '/' + recording.fileName);
+
+  //   if (recording.recordType === 'Video') {
+  //     let placehoalder = recording.fileName.split('.')[0] + '@2.jpeg';
+  //     await fs.remove(recPath + '/' + placehoalder);
+  //   }
+  // }
+
+  // Cleartimer.removeRecordingTimer(id);
+
+  // return Database.recordingsDB.chain
+  //   .get('recordings')
+  //   .remove((rec) => rec.id === id)
+  //   .value();
+  const recording = await Models.Recording.findById(id);
   if (recording) {
-    await fs.remove(recPath + '/' + recording.fileName);
+    try { 
+      fs.unlinkSync(`${path.resolve()}/recording/${recording.fileName}`);
+      fs.unlinkSync(`${path.resolve()}/recording/${recording.name}@2.jpeg`);
 
-    if (recording.recordType === 'Video') {
-      let placehoalder = recording.fileName.split('.')[0] + '@2.jpeg';
-      await fs.remove(recPath + '/' + placehoalder);
+     } catch (e) {
+      console.log('file not found');
     }
+    await recording.destroy();
   }
-
-  Cleartimer.removeRecordingTimer(id);
-
-  return Database.recordingsDB.chain
-    .get('recordings')
-    .remove((rec) => rec.id === id)
-    .value();
 };
 
 export const removeAll = async () => {
-  const recPath = Database.recordingsDB.chain.get('path').cloneDeep().value();
+    const recordings = await Models.Recording.findAll();
+  for (const recording of recordings) {
+      try { 
+        fs.unlinkSync(`${path.resolve()}/recording/${recording.fileName}`);
+        fs.unlinkSync(`${path.resolve()}/recording/${recording.name}@2.jpeg`);
 
-  await fs.emptyDir(recPath);
-  Cleartimer.stopRecordings();
+        } catch (e) {
+          console.log('file not found');
+        }
+        await recording.destroy();
+  }
+  // const recPath = Database.recordingsDB.chain.get('path').cloneDeep().value();
 
-  return Database.recordingsDB.chain
-    .get('recordings')
-    .remove(() => true)
-    .value();
+  // await fs.emptyDir(recPath);
+  // Cleartimer.stopRecordings();
+
+  // return Database.recordingsDB.chain
+  //   .get('recordings')
+  //   .remove(() => true)
+  //   .value();
+};
+export const removeOlds = async (secounds) => {
+  const recordings = await Models.Recording.findAll({
+    where: {
+        timestamp: { $lt: moment().unix() - secounds },
+      }
+    });
+  for (const recording of recordings) {
+     try { 
+       fs.unlinkSync(`${path.resolve()}/recording/${recording.fileName}`);
+       fs.unlinkSync(`${path.resolve()}/recording/${recording.name}@2.jpeg`);
+        } catch (e) {
+          console.log('file not found');
+        }
+        await recording.destroy();
+  }
+  
 };

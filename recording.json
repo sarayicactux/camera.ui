@@ -1,0 +1,32 @@
+{
+  "records": [
+    {
+      "id": "1cc7f0bda5",
+      "camera": "sec",
+      "fileName": "sec-1cc7f0bda5-1729663012_d_CUI.mp4",
+      "name": "sec-1cc7f0bda5-1729663012_d_CUI",
+      "extension": "mp4",
+      "recordStoring": true,
+      "recordType": "Video",
+      "trigger": "doorbell",
+      "room": "Standard",
+      "time": "2024-10-23 09:26:52",
+      "timestamp": 1729663012,
+      "label": "no label"
+    },
+    {
+      "id": "93d07268f3",
+      "camera": "PTZtest",
+      "fileName": "PTZtest-93d07268f3-1729663012_d_CUI.mp4",
+      "name": "PTZtest-93d07268f3-1729663012_d_CUI",
+      "extension": "mp4",
+      "recordStoring": true,
+      "recordType": "Video",
+      "trigger": "doorbell",
+      "room": "Standard",
+      "time": "2024-10-23 09:26:52",
+      "timestamp": 1729663012,
+      "label": "no label"
+    }
+  ]
+}
